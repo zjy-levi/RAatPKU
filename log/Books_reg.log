@@ -1,0 +1,140 @@
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+/mnt/data_disk/chu123/anaconda3/envs/jyuzh/lib/python3.12/site-packages/pandas/core/arraylike.py:399: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+Baseline model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.008
+Model:                                  OLS   Adj. R-squared:                  0.008
+Method:                       Least Squares   F-statistic:                     7879.
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:28:50   Log-Likelihood:            -1.1690e+06
+No. Observations:                   1004583   AIC:                         2.338e+06
+Df Residuals:                       1004581   BIC:                         2.338e+06
+Df Model:                                 1                                         
+Covariance Type:                  nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          0.4388      0.001    553.630      0.000       0.437       0.440
+disappointment     1.0139      0.011     88.762      0.000       0.992       1.036
+==============================================================================
+Omnibus:                   450144.915   Durbin-Watson:                   1.374
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2234450.641
+Skew:                           2.184   Prob(JB):                         0.00
+Kurtosis:                       8.857   Cond. No.                         14.8
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+Sentiment model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.082
+Model:                                  OLS   Adj. R-squared:                  0.082
+Method:                       Least Squares   F-statistic:                 1.285e+04
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:28:51   Log-Likelihood:            -1.1298e+06
+No. Observations:                   1004583   AIC:                         2.260e+06
+Df Residuals:                       1004575   BIC:                         2.260e+06
+Df Model:                                 7                                         
+Covariance Type:                  nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          0.2182      0.002     96.748      0.000       0.214       0.223
+disappointment    -0.2877      0.013    -22.482      0.000      -0.313      -0.263
+sadness            0.1624      0.004     39.615      0.000       0.154       0.170
+anger              0.0492      0.005     10.669      0.000       0.040       0.058
+fear              -0.0006      0.004     -0.168      0.867      -0.008       0.007
+disgust            0.5612      0.005    108.880      0.000       0.551       0.571
+surprise           0.3769      0.003    128.471      0.000       0.371       0.383
+joy               -0.1117      0.002    -50.235      0.000      -0.116      -0.107
+==============================================================================
+Omnibus:                   416185.430   Durbin-Watson:                   1.475
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          1962877.851
+Skew:                           2.008   Prob(JB):                         0.00
+Kurtosis:                       8.547   Cond. No.                         23.9
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+Disappointment model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.204
+Model:                                  OLS   Adj. R-squared:                  0.204
+Method:                       Least Squares   F-statistic:                 5.148e+04
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:28:51   Log-Likelihood:            -1.0583e+06
+No. Observations:                   1004583   AIC:                         2.117e+06
+Df Residuals:                       1004577   BIC:                         2.117e+06
+Df Model:                                 5                                         
+Covariance Type:                  nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 -0.3325      0.005    -65.904      0.000      -0.342      -0.323
+disappointment             0.1431      0.011     12.701      0.000       0.121       0.165
+rating                    -0.0818      0.001   -107.228      0.000      -0.083      -0.080
+np.log(titleLen + 1)       0.0244      0.001     20.564      0.000       0.022       0.027
+np.log(contentLen + 1)     0.2087      0.001    377.180      0.000       0.208       0.210
+np.log(imageNum + 1)       0.3548      0.005     73.205      0.000       0.345       0.364
+==============================================================================
+Omnibus:                   358398.426   Durbin-Watson:                   1.560
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          1566970.187
+Skew:                           1.717   Prob(JB):                         0.00
+Kurtosis:                       8.064   Cond. No.                         125.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+All vars model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.213
+Model:                                  OLS   Adj. R-squared:                  0.213
+Method:                       Least Squares   F-statistic:                 2.466e+04
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:28:53   Log-Likelihood:            -1.0528e+06
+No. Observations:                   1004583   AIC:                         2.106e+06
+Df Residuals:                       1004571   BIC:                         2.106e+06
+Df Model:                                11                                         
+Covariance Type:                  nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 -0.4482      0.005    -85.703      0.000      -0.458      -0.438
+disappointment            -0.1661      0.012    -13.824      0.000      -0.190      -0.143
+sadness                   -0.0626      0.004    -16.259      0.000      -0.070      -0.055
+anger                      0.0295      0.004      6.876      0.000       0.021       0.038
+fear                      -0.0543      0.004    -15.171      0.000      -0.061      -0.047
+disgust                    0.4183      0.005     84.110      0.000       0.409       0.428
+surprise                  -0.0539      0.003    -18.370      0.000      -0.060      -0.048
+joy                       -0.0382      0.002    -17.225      0.000      -0.043      -0.034
+rating                    -0.0431      0.001    -47.156      0.000      -0.045      -0.041
+np.log(titleLen + 1)       0.0264      0.001     22.267      0.000       0.024       0.029
+np.log(contentLen + 1)     0.2042      0.001    343.304      0.000       0.203       0.205
+np.log(imageNum + 1)       0.3495      0.005     72.462      0.000       0.340       0.359
+==============================================================================
+Omnibus:                   353719.224   Durbin-Watson:                   1.574
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          1540574.251
+Skew:                           1.693   Prob(JB):                         0.00
+Kurtosis:                       8.034   Cond. No.                         135.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

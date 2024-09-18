@@ -1,0 +1,124 @@
+Baseline model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.005
+Model:                                  OLS   Adj. R-squared:                  0.005
+Method:                       Least Squares   F-statistic:                     5097.
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:27:38   Log-Likelihood:            -9.0258e+05
+No. Observations:                   1009457   AIC:                         1.805e+06
+Df Residuals:                       1009455   BIC:                         1.805e+06
+Df Model:                                 1                                         
+Covariance Type:                  nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          0.2287      0.001    377.351      0.000       0.228       0.230
+disappointment     0.6437      0.009     71.397      0.000       0.626       0.661
+==============================================================================
+Omnibus:                   727507.197   Durbin-Watson:                   1.881
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):         11360916.280
+Skew:                           3.410   Prob(JB):                         0.00
+Kurtosis:                      17.953   Cond. No.                         15.3
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+Sentiment model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.051
+Model:                                  OLS   Adj. R-squared:                  0.051
+Method:                       Least Squares   F-statistic:                     7700.
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:27:39   Log-Likelihood:            -8.7887e+05
+No. Observations:                   1009457   AIC:                         1.758e+06
+Df Residuals:                       1009449   BIC:                         1.758e+06
+Df Model:                                 7                                         
+Covariance Type:                  nonrobust                                         
+==================================================================================
+                     coef    std err          t      P>|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          0.0636      0.002     36.008      0.000       0.060       0.067
+disappointment    -0.1073      0.010    -10.257      0.000      -0.128      -0.087
+sadness            0.0286      0.005      6.149      0.000       0.020       0.038
+anger             -0.1057      0.005    -22.702      0.000      -0.115      -0.097
+fear               0.3095      0.004     77.675      0.000       0.302       0.317
+disgust            0.1805      0.004     41.067      0.000       0.172       0.189
+surprise           0.2403      0.002    106.114      0.000       0.236       0.245
+joy               -0.0298      0.002    -15.026      0.000      -0.034      -0.026
+==============================================================================
+Omnibus:                   711522.423   Durbin-Watson:                   1.898
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):         11076476.231
+Skew:                           3.300   Prob(JB):                         0.00
+Kurtosis:                      17.825   Cond. No.                         24.5
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+Disappointment model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.168
+Model:                                  OLS   Adj. R-squared:                  0.168
+Method:                       Least Squares   F-statistic:                 4.088e+04
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:27:39   Log-Likelihood:            -8.1205e+05
+No. Observations:                   1009457   AIC:                         1.624e+06
+Df Residuals:                       1009451   BIC:                         1.624e+06
+Df Model:                                 5                                         
+Covariance Type:                  nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 -0.3668      0.004    -98.438      0.000      -0.374      -0.359
+disappointment            -0.0880      0.009     -9.721      0.000      -0.106      -0.070
+rating                    -0.0411      0.000    -86.649      0.000      -0.042      -0.040
+np.log(titleLen + 1)       0.0020      0.001      2.178      0.029       0.000       0.004
+np.log(contentLen + 1)     0.1702      0.001    331.276      0.000       0.169       0.171
+np.log(imageNum + 1)       0.3633      0.003    128.318      0.000       0.358       0.369
+==============================================================================
+Omnibus:                   646279.593   Durbin-Watson:                   1.922
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          9053813.069
+Skew:                           2.912   Prob(JB):                         0.00
+Kurtosis:                      16.466   Cond. No.                         119.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+All vars model summary:
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     np.log(helpful_vote + 1)   R-squared:                       0.174
+Model:                                  OLS   Adj. R-squared:                  0.174
+Method:                       Least Squares   F-statistic:                 1.932e+04
+Date:                      Wed, 18 Sep 2024   Prob (F-statistic):               0.00
+Time:                              22:27:41   Log-Likelihood:            -8.0868e+05
+No. Observations:                   1009457   AIC:                         1.617e+06
+Df Residuals:                       1009445   BIC:                         1.618e+06
+Df Model:                                11                                         
+Covariance Type:                  nonrobust                                         
+==========================================================================================
+                             coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------------------
+Intercept                 -0.4277      0.004   -102.473      0.000      -0.436      -0.420
+disappointment            -0.1729      0.010    -17.685      0.000      -0.192      -0.154
+sadness                   -0.0275      0.005     -6.063      0.000      -0.036      -0.019
+anger                      0.0990      0.004     22.546      0.000       0.090       0.108
+fear                       0.1805      0.004     48.316      0.000       0.173       0.188
+disgust                    0.0591      0.004     14.243      0.000       0.051       0.067
+surprise                  -0.0746      0.002    -32.315      0.000      -0.079      -0.070
+joy                        0.0335      0.002     16.820      0.000       0.030       0.037
+rating                    -0.0271      0.001    -39.003      0.000      -0.028      -0.026
+np.log(titleLen + 1)       0.0001      0.001      0.109      0.913      -0.002       0.002
+np.log(contentLen + 1)     0.1725      0.001    318.052      0.000       0.171       0.174
+np.log(imageNum + 1)       0.3581      0.003    126.848      0.000       0.353       0.364
+==============================================================================
+Omnibus:                   642119.276   Durbin-Watson:                   1.924
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          8910776.553
+Skew:                           2.889   Prob(JB):                         0.00
+Kurtosis:                      16.359   Cond. No.                         131.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.

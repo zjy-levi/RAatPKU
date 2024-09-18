@@ -1,0 +1,9 @@
+*.csv
+*.txt
+requirement_py31012.txt
+requirements.txt
+data/
+model/
+results/
+.vscode/
+__pycache__/
