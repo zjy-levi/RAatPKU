@@ -89,80 +89,80 @@ if __name__ == "__main__":
     }
     config = add_config(config, extra_config)
     model = CustomBERTModel(config=config)
-    dataset = load_dataset("google-research-datasets/go_emotions", "simplified")
-    dataset = dataset.map(convert_labels_to_multilabel, batched=True)
-    traindataset = dataset['train']
-    testdataset = dataset['test']
-    # 配置 LoRA
-    lora_config = LoraConfig(
-        task_type=TaskType.SEQ_CLS, 
-        r=8, 
-        lora_alpha=32, 
-        lora_dropout=0.1, 
-        target_modules=["classifier"]
-    )
-    # 应用 LoRA 到模型
-    model = get_peft_model(model, lora_config)
-    # 查看LoRA应用前后模型的可训练参数量
-    print("Number of trainable parameters before LoRA:", sum(p.numel() for p in model.parameters() if p.requires_grad))
-    # print(model)
-    # Define custom Trainer to use BCEWithLogitsLoss
-    class MultilabelTrainer(Trainer):
-        def compute_loss(self, model, inputs, return_outputs=False):
-            labels = inputs.pop("labels")
-            outputs = model(**inputs)
-            logits = outputs["logits"]
-            loss_fct = BCEWithLogitsLoss()
-            loss = loss_fct(logits, labels.float())
-            return (loss, outputs) if return_outputs else loss
+    # dataset = load_dataset("google-research-datasets/go_emotions", "simplified")
+    # dataset = dataset.map(convert_labels_to_multilabel, batched=True)
+    # traindataset = dataset['train']
+    # testdataset = dataset['test']
+    # # 配置 LoRA
+    # lora_config = LoraConfig(
+    #     task_type=TaskType.SEQ_CLS, 
+    #     r=8, 
+    #     lora_alpha=32, 
+    #     lora_dropout=0.1, 
+    #     target_modules=["classifier"]
+    # )
+    # # 应用 LoRA 到模型
+    # model = get_peft_model(model, lora_config)
+    # # 查看LoRA应用前后模型的可训练参数量
+    # print("Number of trainable parameters before LoRA:", sum(p.numel() for p in model.parameters() if p.requires_grad))
+    # # print(model)
+    # # Define custom Trainer to use BCEWithLogitsLoss
+    # class MultilabelTrainer(Trainer):
+    #     def compute_loss(self, model, inputs, return_outputs=False):
+    #         labels = inputs.pop("labels")
+    #         outputs = model(**inputs)
+    #         logits = outputs["logits"]
+    #         loss_fct = BCEWithLogitsLoss()
+    #         loss = loss_fct(logits, labels.float())
+    #         return (loss, outputs) if return_outputs else loss
     # # Setup evaluation 
-    metric = evaluate.load("accuracy")
-    def compute_metrics(eval_pred):
-        logits, labels = eval_pred
-        predictions = (logits > 0).astype(int)
-        return metric.compute(predictions=predictions, references=labels)
+    # metric = evaluate.load("accuracy")
+    # def compute_metrics(eval_pred):
+    #     logits, labels = eval_pred
+    #     predictions = (logits > 0).astype(int)
+    #     return metric.compute(predictions=predictions, references=labels)
 
-    # 微调模型
-    training_args = TrainingArguments(
-        output_dir='./results',
-        save_steps=500, # 每500步保存一次模型到/results文件夹,输出checkpoint_{steps}文件夹
-        save_total_limit=2, # 保存最近的2个模型
-        evaluation_strategy="epoch",
-        remove_unused_columns=False,
-        learning_rate=2e-5,
-        per_device_train_batch_size=8,
-        per_device_eval_batch_size=8,
-        num_train_epochs=5,
-        logging_steps=100,
-        weight_decay=0.01,
-        fp16=True,
-    )
+    # # 微调模型
+    # training_args = TrainingArguments(
+    #     output_dir='./results',
+    #     save_steps=500, # 每500步保存一次模型到/results文件夹,输出checkpoint_{steps}文件夹
+    #     save_total_limit=2, # 保存最近的2个模型
+    #     evaluation_strategy="epoch",
+    #     remove_unused_columns=False,
+    #     learning_rate=2e-5,
+    #     per_device_train_batch_size=8,
+    #     per_device_eval_batch_size=8,
+    #     num_train_epochs=5,
+    #     logging_steps=100,
+    #     weight_decay=0.01,
+    #     fp16=True,
+    # )
 
-    trainer = MultilabelTrainer(
-        model=model,
-        args=training_args,
-        train_dataset=traindataset,
-        eval_dataset=testdataset,
-        compute_metrics=compute_metrics,
-    )
+    # trainer = MultilabelTrainer(
+    #     model=model,
+    #     args=training_args,
+    #     train_dataset=traindataset,
+    #     eval_dataset=testdataset,
+    #     compute_metrics=compute_metrics,
+    # )
 
-    trainer.train()
+    # trainer.train()
 
-    # 保存微调后的模型
-    model.save_pretrained('model/fine_tuned_bert') # 只有model继承PretrainedModel才能使用这个方法
-    tokenizer.save_pretrained('model/fine_tuned_bert')
+    # # 保存微调后的模型
+    # model.save_pretrained('model/fine_tuned_bert') # 只有model继承PretrainedModel才能使用这个方法
+    # tokenizer.save_pretrained('model/fine_tuned_bert')
 
-    # # # 使用微调后的模型进行预测
-    # # texts = [
-    # #     "I love programming!",
-    # #     "I feel sad today."
-    # # ]
+    # 使用微调后的模型进行预测
+    texts = [
+        "I love programming!",
+        "I feel sad today."
+    ]
 
-    # # inputs = tokenizer(texts, return_tensors="pt", padding=True, truncation=True)
-    # # outputs = model(**inputs)
-    # # predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+    inputs = tokenizer(texts, return_tensors="pt", padding=True, truncation=True)
+    outputs = model(**inputs)
+    predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
 
-    # # # 打印预测结果
-    # # for i, text in enumerate(texts):
-    # #     print(f"Text: {text}")
-    # #     print(f"Predicted probabilities: {predictions[i].detach().numpy()}")
+    # 打印预测结果
+    for i, text in enumerate(texts):
+        print(f"Text: {text}")
+        print(f"Predicted probabilities: {predictions[i].detach().numpy()}")

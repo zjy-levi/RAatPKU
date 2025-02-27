@@ -37,7 +37,7 @@ class TextDataset(Dataset):
 
 if __name__ == "__main__":
 
-    classifier = pipeline(task="text-classification", model="roberta-base-go_emotions", top_k=None, device=0)
+    classifier = pipeline(task="text-classification", model="SamLowe/roberta-base-go_emotions", top_k=None, device=0)
     # text这里只需要传入想分析disappointment的文本即可，下面是测试案例
     text = TextDataset(["I am so disappointed in you.", "I am so happy for you."])
     dataloader = DataLoader(text, batch_size=32, shuffle=False)
